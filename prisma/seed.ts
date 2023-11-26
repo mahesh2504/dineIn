@@ -21,6 +21,14 @@ async function seed() {
 			role: Role.WAITER,
 		},
 	})
+	await db.user.create({
+		data: {
+			name: 'Mahesh',
+			email: 'mahesh@app.com',
+			password: await createPasswordHash('password'),
+			role: Role.WAITER,
+		},
+	})
 
 	await db.waiter.create({
 		data: {
