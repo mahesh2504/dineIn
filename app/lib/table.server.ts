@@ -1,4 +1,9 @@
-import type {Reservation, Table, User} from '@prisma/client'
+import {
+	ReservationStatus,
+	type Reservation,
+	type Table,
+	type User,
+} from '@prisma/client'
 import {ObjectId} from 'bson'
 import {db} from '~/db.server'
 
@@ -61,6 +66,7 @@ export function updateTable({
 				id: reservationId,
 			},
 			data: {
+				status: ReservationStatus.CONFIRMED,
 				waiter: {
 					connect: {
 						id: waiterId,

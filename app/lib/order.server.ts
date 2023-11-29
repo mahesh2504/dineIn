@@ -202,7 +202,7 @@ export async function generateBill({
 				id: reservation.id,
 			},
 			data: {
-				status: ReservationStatus.COMPLETED,
+				status: ReservationStatus.PENDING_PAYMENT,
 				bill: {
 					create: {
 						amount,

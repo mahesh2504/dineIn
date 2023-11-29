@@ -52,11 +52,11 @@ export async function createReservation(
 						const isConfirmed = r.status === ReservationStatus.CONFIRMED
 						const isOnSameDay =
 							dateDiffInDays(new Date(r.bookingDate), data.bookingDate) === 0
-						const isConflicting =
+							const isConflicting =
 							(timeDiffInMs(data.timeSlotStart, r.timeSlotStart) >= 0 &&
-								timeDiffInMs(data.timeSlotStart, r.timeSlotEnd)) < 0 ||
+							timeDiffInMs(data.timeSlotStart, r.timeSlotEnd) < 0) ||
 							(timeDiffInMs(data.timeSlotEnd, r.timeSlotStart) > 0 &&
-								timeDiffInMs(data.timeSlotEnd, r.timeSlotEnd) <= 0)
+							timeDiffInMs(data.timeSlotEnd, r.timeSlotEnd) <= 0);
 						return isConfirmed && isOnSameDay && isConflicting
 					}) && data.noOfPeople <= table.capacity
 			)

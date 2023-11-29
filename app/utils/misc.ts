@@ -1,4 +1,4 @@
-import {PaymentMethod} from '@prisma/client'
+import {PaymentMethod, ReservationStatus} from '@prisma/client'
 
 export function round(number: number, precision: number = 2) {
 	const d = Math.pow(10, precision)
@@ -93,3 +93,17 @@ export const splitBillOptions = [
 		value: '6',
 	},
 ]
+
+export const reservationStatusLabelLookup = {
+	[ReservationStatus.CANCELLED]: 'Cancelled',
+	[ReservationStatus.CONFIRMED]: 'Confirmed',
+	[ReservationStatus.COMPLETED]: 'Completed',
+	[ReservationStatus.PENDING_PAYMENT]: 'Pending Payment',
+} satisfies Record<ReservationStatus, string>
+
+export const reservationStatusColorLookup = {
+	[ReservationStatus.CANCELLED]: 'red',
+	[ReservationStatus.CONFIRMED]: 'green',
+	[ReservationStatus.COMPLETED]: 'blue',
+	[ReservationStatus.PENDING_PAYMENT]: 'yellow',
+} satisfies Record<ReservationStatus, string>

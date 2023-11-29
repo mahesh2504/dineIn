@@ -30,7 +30,6 @@ const baseNavItems: NavItem[] = [
     href: "/tables",
     icon: TableIcon,
   },
-  
 ]
 
 const managerNavItems: NavItem[] = [

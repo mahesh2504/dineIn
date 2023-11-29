@@ -1,6 +1,13 @@
-import {Button, Group, PasswordInput, Switch, TextInput} from '@mantine/core'
+import {
+	Anchor,
+	Button,
+	Group,
+	PasswordInput,
+	Switch,
+	TextInput,
+} from '@mantine/core'
 import type {ActionFunction} from '@remix-run/node'
-import {useFetcher, useSearchParams} from '@remix-run/react'
+import {Link, useFetcher, useSearchParams} from '@remix-run/react'
 import {verifyLogin} from '~/lib/user.server'
 import {LoginSchema} from '~/utils/zod.schema'
 import {createUserSession} from '~/session.server'
@@ -91,6 +98,15 @@ export default function Login() {
 					>
 						Sign in
 					</Button>
+
+					<div className="mt-2 text-center underline underline-offset-4">
+						<p className="text-base text-gray-600">
+							Reserve your spot in the queue by{' '}
+							<Anchor component={Link} to="/book-online" className="font-bold ">
+								Clicking here!
+							</Anchor>
+						</p>
+					</div>
 				</fieldset>
 			</fetcher.Form>
 		</>

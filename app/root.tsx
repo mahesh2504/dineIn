@@ -1,13 +1,13 @@
 import {createEmotionCache, MantineProvider} from '@mantine/core'
 import {ModalsProvider} from '@mantine/modals'
 import {StylesPlaceholder} from '@mantine/remix'
-import type {SerializeFrom} from '@remix-run/node'
-import {
-	json,
-	type LinksFunction,
-	type LoaderArgs,
-	type MetaFunction,
+import type {
+	LinksFunction,
+	LoaderArgs,
+	MetaFunction,
+	SerializeFrom,
 } from '@remix-run/node'
+import {json} from '@remix-run/node'
 import {
 	Links,
 	LiveReload,
@@ -17,9 +17,9 @@ import {
 	ScrollRestoration,
 } from '@remix-run/react'
 import appConfig from 'app.config'
+import {Toaster} from 'sonner'
 import {getUser} from '~/session.server'
 import styles from './styles/app.css'
-import {Toaster} from 'sonner'
 
 const appendCache = createEmotionCache({key: 'mantine', prepend: false})
 
@@ -71,7 +71,7 @@ export default function App() {
 	return (
 		<Document>
 			<ModalsProvider>
-				<Toaster position="top-center" />
+				<Toaster position="top-center" richColors />
 				<Outlet />
 			</ModalsProvider>
 		</Document>

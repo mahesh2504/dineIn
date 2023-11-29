@@ -121,13 +121,14 @@ model Bill {
   splitInto     Int           @default(1)
   paymenyMethod PaymentMethod
   paymentStatus PaymentStatus @default(UNPAID)
+  amountPaid    Float         @default(0)
 
   order         Order       @relation(fields: [orderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   orderId       String      @unique @db.ObjectId
   reservation   Reservation @relation(fields: [reservationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   reservationId String      @unique @db.ObjectId
 
-  @@map("bill")
+  @@map("payment")
 }
 
 enum Role {
@@ -154,5 +155,6 @@ enum PaymentMethod {
 enum ReservationStatus {
   CONFIRMED
   CANCELLED
+  PENDING_PAYMENT
   COMPLETED
 }
